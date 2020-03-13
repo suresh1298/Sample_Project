@@ -37,7 +37,7 @@ pipeline {
             }
             
         }
-        stage ('nexus') {
+        stage ('tomcat') {
             steps {
                 sh "cp target/*.war /opt/tomcat/webapps  "
             }
