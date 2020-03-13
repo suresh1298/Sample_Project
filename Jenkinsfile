@@ -39,7 +39,7 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                sh "curl http://13.233.90.88:8081/#browse/browse:suresh-release:happy%2Fsimple-web-app%2F1.2.0%2Fsimple-web-app-1.5.0.war /opt/tomcat/webapps  "
+                sh "cp target/*.war /opt/tomcat/webapps  "
             }
         }
     }
