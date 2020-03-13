@@ -33,7 +33,7 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'simple-web-app', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'happy', nexusUrl: '13.233.90.88:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '1.2.0'
+                nexusArtifactUploader artifacts: [[artifactId: 'simple-web-app', classifier: '', file: 'targer/simple-web-app.war', type: 'war']], credentialsId: '27c6f6f1-9a70-4f02-9dd4-9a9fe8565810', groupId: 'org.mitre', nexusUrl: '3.89.108.103.8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nexus_relese', version: '7.8'
             }
         }
     }
