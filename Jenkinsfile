@@ -39,7 +39,7 @@ pipeline {
         }
         stage ('tomcat') {
             steps {
-                sh "sudo cp target/*.war /opt/tomcat/webapps  "
+                sh "sudo cp target/*.war /opt/tomcat/webapps"
             }
         }
     }
