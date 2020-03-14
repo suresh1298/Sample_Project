@@ -18,7 +18,6 @@ pipeline {
             } 
         }
         stage ("sonar") {
-            agent { label 'pipe_slave' }
             environment {
                 scannerHome = tool 'sonarscanner'
             }
