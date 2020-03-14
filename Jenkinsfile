@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage ("git scm") {
-            if (env.branch_name='master') {
+            if (env.branch_name == 'master') {
                 steps {
                     dir ("/root/scm") {
                         git 'https://github.com/suresh1298/Sample_Project'
@@ -20,7 +20,7 @@ pipeline {
             environment {
                 scannerHome = tool 'sonarscanner'
             }
-            if (env.branch_name='master') {
+            if (env.branch_name == 'master') {
                 steps {
                     withSonarQubeEnv('sonarqube') {
                         sh "${scannerHome}/bin/sonar-scanner"
