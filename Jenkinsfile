@@ -5,10 +5,15 @@ pipeline {
     }
     stages {
         stage ("git scm") {
-            steps {
-                dir ("/home/scm") {
-                    git 'https://github.com/suresh1298/Sample_Project'
+            if (env.branch_name='master') {
+                steps {
+                    dir ("/root/scm") {
+                        git 'https://github.com/suresh1298/Sample_Project'
+                    }
+                    
                 }
+            } else {
+                sh 'echo this is not from master branch'
             }
         }
         stage ("sonar") {
@@ -16,10 +21,14 @@ pipeline {
             environment {
                 scannerHome = tool 'sonarscanner'
             }
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+            if (env.branch_name='master') {
+                steps {
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
+            } else {
+                sh 'echo this is not from master'
             }
         }
         stage ("quality check") {
@@ -39,7 +48,7 @@ pipeline {
         stage ('nexus') {
             agent { label 'pipe_slave' }
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'happy', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'org.mitre', nexusUrl: '13.233.113.206:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '2.1'
+                nexusArtifactUploader artifacts: [[artifactId: 'happy', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'org.mitre', nexusUrl: '13.233.90.88:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '2.1'
             }
             
         }
