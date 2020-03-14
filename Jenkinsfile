@@ -7,7 +7,7 @@ pipeline {
         stage ("git scm") {
             if (env.branch_name == 'master') {
                 steps {
-                    dir ("/root/scm") {
+                    dir ("/home/raj") {
                         git 'https://github.com/suresh1298/Sample_Project'
                     }
                 }
