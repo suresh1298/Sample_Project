@@ -5,7 +5,6 @@ pipeline {
     }
     stages {
         stage ("git scm") {
-            agent { label 'pipe_slave' }
             steps {
                 git 'https://github.com/suresh1298/Sample_Project'
             }
