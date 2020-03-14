@@ -5,29 +5,33 @@ pipeline {
     }
     stages {
         stage ("git scm") {
-            if (env.branch_name == 'master') {
-                steps {
-                    dir ("/home/raj") {
-                        git 'https://github.com/suresh1298/Sample_Project'
-                    }
+            steps {
+                script {
+                    if (env.branch_name == 'master') {
+                        dir ("/home/scm") {
+                            git 'https://github.com/suresh1298/Sample_Project'
+                        }
+                    } else {
+                        sh 'echo this is not from master branch'
+                    }    
                 }
-            } else {
-                sh 'echo this is not from master branch'
-            }
+            } 
         }
         stage ("sonar") {
             agent { label 'pipe_slave' }
             environment {
                 scannerHome = tool 'sonarscanner'
             }
-            if (env.branch_name == 'master') {
-                steps {
-                    withSonarQubeEnv('sonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+            steps {
+                script {
+                    if (env.branch_name == 'master') {
+                        withSonarQubeEnv('sonarqube') {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
+                    } else {
+                        sh 'echo this is not from master'
                     }
                 }
-            } else {
-                sh 'echo this is not from master'
             }
         }
         stage ("quality check") {
