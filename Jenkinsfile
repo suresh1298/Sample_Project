@@ -5,13 +5,13 @@ pipeline {
     }
     stages {
         stage ("git scm") {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             steps {
                 git 'https://github.com/suresh1298/Sample_Project'
             }
         }
         stage ("sonar") {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             environment {
                 scannerHome = tool 'sonarscanner'
             }
@@ -22,7 +22,7 @@ pipeline {
             }
         }
         stage ("quality check") {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
@@ -30,20 +30,20 @@ pipeline {
             }
         }
         stage ('maven build') {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             steps {
                 sh 'mvn clean install'
             }
         }
         stage ('nexus') {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'happy', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'org.mitre', nexusUrl: '13.233.90.88:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '2.1'
             }
             
         }
         stage ('tomcat') {
-            node { 'pipe_slave' }
+            agent { label 'pipe_slave' }
             steps {
                 sh "sudo cp target/*.war /opt/tomcat/webapps"
             }
