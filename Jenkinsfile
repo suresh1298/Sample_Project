@@ -60,7 +60,7 @@ pipeline {
             steps {
                 script {
                    if (env.branch_name == 'master') {
-                       nexusArtifactUploader artifacts: [[artifactId: 'happy', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'org.mitre', nexusUrl: '13.233.90.88:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '2.3'
+                       nexusArtifactUploader artifacts: [[artifactId: 'happy', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '59cfd18f-873c-4852-be70-8b4e8b5850d1', groupId: 'org.mitre', nexusUrl: '13.233.113.206:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '2.3'
                     } else {
                         sh 'echo this is not from master'
                     }
