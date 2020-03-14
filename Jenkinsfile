@@ -32,7 +32,6 @@ pipeline {
             }
         }
         stage ("quality check") {
-            agent { label 'pipe_slave' }
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
