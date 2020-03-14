@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage ("git scm") {
             steps {
-                git 'https://github.com/suresh1298/Sample_Project'
+                dir ("/root/scm") {
+                    git 'https://github.com/suresh1298/Sample_Project'
+                }
             }
         }
         stage ("sonar") {
