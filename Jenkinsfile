@@ -8,9 +8,7 @@ pipeline {
             steps {
                 script {
                     if (env.branch_name == 'master') {
-                        dir ("/home/scm") {
-                            git 'https://github.com/suresh1298/Sample_Project'
-                        }
+                        git 'https://github.com/suresh1298/Sample_Project'
                     } else {
                         sh 'echo this is not from master branch'
                     }    
