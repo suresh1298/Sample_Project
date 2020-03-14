@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ("git scm") {
             steps {
-                dir ("/root/scm") {
+                dir ("/home/scm") {
                     git 'https://github.com/suresh1298/Sample_Project'
                 }
             }
