@@ -201,7 +201,7 @@
 	 <distributionManagement>
               <repository>
 		  <id>suresh-release</id>
-	          <name>Chala_Release</name>
+	          <name>whatsapp_Release</name>
 		      <url>http://13.127.238.73:8081/repository/suresh-release/</url>
 	      </repository>
 	      <snapshotRepository>
