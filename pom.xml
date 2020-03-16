@@ -200,14 +200,14 @@
 	</build>
 	 <distributionManagement>
               <repository>
-		  <id>Chala_Release</id>
+		  <id>suresh-release</id>
 	          <name>Chala_Release</name>
-		      <url>http://13.235.247.133:8081/nexus/content/repositories/Chala_Release/</url>
+		      <url>http://13.127.238.73:8081/repository/suresh-release/</url>
 	      </repository>
 	      <snapshotRepository>
-		  <id>Chala_Snapshot</id>
+		  <id>suresh-snapshot</id>
 		  <name>2</name>
-		  <url>http://13.235.247.133:8081/nexus/content/repositories/Chala_Snapshot/</url>
+		  <url>http://13.127.238.73:8081/repository/suresh-snapshot/</url>
 	      </snapshotRepository>
 	 </distributionManagement>
 	<name>simple-web-app</name>
