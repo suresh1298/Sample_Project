@@ -52,4 +52,5 @@ pipeline {
                 body: "JOB FAILURE - \"${env.JOB_NAME}\" Build No: ${env.BUILD_NUMBER}\n\nClick on the below link to view the logs:\n ${env.BUILD_URL}\n"
             )
         }
+    }
 }
