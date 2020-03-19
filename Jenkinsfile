@@ -33,8 +33,6 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                IMAGE = readMavenPom().getArtifactId()
-                VERSION = readMavenPom().getVersion()
                 nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'suresh-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/simple-web-app.war']], mavenCoordinate: [artifactId: 'simple-web-app', groupId: 'happy', packaging: 'war', version: '${VERSION}']]]
             }
         }
