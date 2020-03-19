@@ -33,7 +33,7 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                nexusArtifactUploader credentialsId: '52fee9db-1d17-4c0f-a51c-be460d324ef0', groupId: 'happy', nexusUrl: '15.206.171.100', nexusVersion: 'nexus3', protocol: 'http', repository: 'suresh-release', version: '1.1'
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'suresh-release', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'simple-web-app', groupId: 'happy', packaging: 'war', version: '1.0']]]
             }
         }
     }
