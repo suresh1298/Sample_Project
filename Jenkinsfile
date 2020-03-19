@@ -33,7 +33,7 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'suresh-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/simple-web-app.war']], mavenCoordinate: [artifactId: 'simple-web-app', groupId: 'happy', packaging: 'war', version: '1.1']]]
+                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'suresh-release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/simple-web-app.war']], mavenCoordinate: [artifactId: 'simple-web-app', groupId: 'happy', packaging: 'war', version: '1.2']]]
             }
         }
         stage ("deploy") {
