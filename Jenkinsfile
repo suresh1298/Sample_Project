@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+    }
     stages {
         stage ("git") {
             steps {
@@ -22,6 +25,11 @@ pipeline {
                    waitForQualityGate abortPipeline: true
                }
            }
+        }
+        stage ("buld") {
+            steps {
+                sh 'mvn clean install'
+            }
         }
     }
 }
