@@ -33,7 +33,7 @@ pipeline {
         }
         stage ('nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'simple-web-app', classifier: '', file: 'target/simple-web-app.war', type: 'war']], credentialsId: '5b2035fb-2986-44bb-8ff1-8c433fa1d996', groupId: 'happy', nexusUrl: '34.237.52.252:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'http://34.237.52.252:8081/repository/sample_release/', version: '1.1'
+               nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'sample_release', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '.war', filePath: 'target/simple-web-app.war']], mavenCoordinate: [artifactId: 'simple-web-app', groupId: 'happy', packaging: 'war', version: '1.1']]]
             }
         }
         stage ("deploy") {
