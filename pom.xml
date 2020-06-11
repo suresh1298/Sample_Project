@@ -202,12 +202,12 @@
               <repository>
 		  <id>suresh-release</id>
 	          <name>whatsapp_Release</name>
-		      <url>http://13.127.238.73:8081/repository/suresh-release/</url>
+		      <url>http://34.237.52.252:8081/repository/sample_release/</url>
 	      </repository>
 	      <snapshotRepository>
 		  <id>suresh-snapshot</id>
 		  <name>2</name>
-		  <url>http://13.127.238.73:8081/repository/suresh-snapshot/</url>
+		  <url>http://34.237.52.252:8081/repository/sample_snapshot/</url>
 	      </snapshotRepository>
 	 </distributionManagement>
 	<name>simple-web-app</name>
