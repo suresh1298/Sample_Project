@@ -11,7 +11,7 @@ pipeline {
                stage ("null") {
                    sh echo 'suresh'
                }
-               stage ('print') {
+               stage ("print") {
                    sh echo 'print'
                }
            }
