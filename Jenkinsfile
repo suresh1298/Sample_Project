@@ -7,15 +7,21 @@ pipeline {
         stage ("scm checkout") {
             parallel {
                stage ("git") {
-                    git credentialsId: '7778fd25-578d-48df-b454-17fe5ca8baa0', url: 'https://github.com/suresh1298/Sample_Project'
+                   steps {
+                       git credentialsId: '7778fd25-578d-48df-b454-17fe5ca8baa0', url: 'https://github.com/suresh1298/Sample_Project'
+                   }
                }
                stage ("null") {
-                   sh "echo 'suresh'"
+                   steps {
+                       sh "echo 'suresh'"
+                   }
                }
                stage ("print") {
-                   sh "echo 'print'"
+                   steps {
+                       sh "echo 'print'"
+                   }
                }
-           }
+            }
         }
         stage ("scan") {
             environment {
