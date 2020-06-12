@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { "setup" }
     tools {
         maven 'maven'
     }
@@ -9,7 +9,7 @@ pipeline {
                stage ("git") {
                    steps {
                        node ("setup") {
-                           git credentialsId: 'aa24c8e4-34ac-4b9b-8fe8-d76c8ac0437b', url: 'https://github.com/suresh1298/Sample_Project'
+                           git credentialsId: '94890d65-8c98-4dfa-8dcd-1529d5e94fed', url: 'https://github.com/suresh1298/Sample_Project'
                        }
                    }
                }
