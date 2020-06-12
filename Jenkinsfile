@@ -4,7 +4,8 @@ pipeline {
         maven 'maven'
     }
     stages {
-           parallel {
+        stage ("scm checkout") {
+            parallel {
                stage ("git") {
                     git credentialsId: '7778fd25-578d-48df-b454-17fe5ca8baa0', url: 'https://github.com/suresh1298/Sample_Project'
                }
@@ -15,6 +16,7 @@ pipeline {
                    sh "echo 'print'"
                }
            }
+        }
         stage ("scan") {
             environment {
                 scannerHome = tool 'sonar'
