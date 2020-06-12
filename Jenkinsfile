@@ -31,7 +31,7 @@ pipeline {
         }
         stage ("scan") {
             environment {
-                scannerHome = tool 'sonar'
+                scannerHome = tool 'sonar_slave'
             }
             steps {
                 node ("sonar_slave") {
